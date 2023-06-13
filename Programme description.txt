@@ -1,0 +1,13 @@
+Description:
+
+The provided code demonstrates a multitasking program that utilizes two threads to simulate the operation of two robots. The program focuses on a scenario where Robot 1 processes pieces and places them on a table, while Robot 2 takes pieces from the table.
+
+The program utilizes semaphores (sem1 and sem2) to synchronize the actions of the two threads. The "sem1" semaphore controls the availability of pieces on the table, while the "sem2" semaphore allows Robot 1 to process a piece.
+
+The thread1_process function represents the behavior of Robot 1. It repeatedly waits for a signal from "sem2" indicating the availability of a piece, simulates the processing time (trait1), and then places a piece on the table. Afterward, it signals "sem1" to notify Robot 2 of the presence of a new piece on the table.
+
+The thread2_process function represents the behavior of Robot 2. It waits for a signal from "sem1" indicating the availability of a piece on the table. Once a signal is received, it simulates the time taken to process the piece (trait2) and then takes the piece from the table. It subsequently signals "sem2" to allow Robot 1 to process another piece.
+
+The main function initializes the semaphores, creates the two threads (th1 and th2), and waits for their completion using pthread_join.
+
+Overall, this multitasking program demonstrates the concurrent behavior of Robot 1 and Robot 2, simulating the processing and handling of pieces. The use of threads and semaphores allows for synchronized execution and efficient resource management between the two robots.
